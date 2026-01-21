@@ -1,0 +1,1431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Sahi Helpline | Confidential Counsellor Support</title>
+<meta name="description" content="Sahi Helpline connects you to trained experts for periods, pregnancy, and safe abortion — privately. Confidential, judgement-free support with medically accurate information." />
+<meta name="robots" content="index, follow" />
+<meta name="theme-color" content="#6a4b3a" />
+
+<meta property="og:title" content="Sahi Helpline | Confidential Counsellor Support" />
+<meta property="og:description" content="Confidential, judgement-free support for periods, pregnancy, and safe abortion." />
+<meta property="og:type" content="website" />
+<meta property="og:image" content="images/kushilogo.png" />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Sahi Helpline | Confidential Counsellor Support" />
+<meta name="twitter:description" content="Confidential, judgement-free support for periods, pregnancy, and safe abortion." />
+<meta name="twitter:image" content="images/kushilogo.png" />
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Sahi Helpline",
+  "logo": "images/kushilogo.png",
+  "description": "Confidential counselling support for periods, pregnancy, and safe abortion."
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Is the helpline confidential?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Conversations are private and anonymous. We never share your information."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What topics can I ask about?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Periods, pregnancy, contraception, abortion, and any questions you feel unsure about."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do I have to decide right away?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. We help you understand options and support your decision at your pace."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is this a judgment-free space?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Always. Our counsellors are trained to listen, support, and never judge."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I reach a counsellor?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Call or schedule a call. We are here when you are ready."
+      }
+    }
+  ]
+}
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+<style>
+/* ---------------- RESET ---------------- */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+/* ---------------- BODY ---------------- */
+body {
+  background: #c7b2ff;
+  font-family: Georgia, serif;
+  overflow-x: hidden;
+}
+
+/* ---------------- FIXED HEADER (NO PADDING ABOVE) ---------------- */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  z-index: 1000;
+  padding: 0;
+}
+
+.header nav {
+  background: white;
+  padding: 14px 36px;
+  border-radius: 0 0 10px 10px;
+  display: flex;
+  gap: 28px;
+  font-size: 14px;
+}
+
+.header nav a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* ---------------- PAGE WRAPPER ---------------- */
+.page {
+  padding: 0;
+}
+
+/* ---------------- HERO (FULLSCREEN -> CARD) ---------------- */
+.hero {
+  position: sticky;
+  top: 0;
+  inset: auto;
+  z-index: 1;
+  min-height: 100dvh;
+  background:
+    repeating-linear-gradient(
+      to bottom,
+      #f4efff 0px,
+      #f4efff 46px,
+      rgba(0,0,0,0.18) 47px
+    );
+  border-radius: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform-origin: top center;
+  will-change: transform, border-radius, padding;
+}
+
+.hero.is-card {
+  position: sticky;
+  top: 0;
+  inset: auto;
+}
+
+/* ---------------- CONTENT ---------------- */
+.content {
+  position: relative;
+  width: min(980px, 90%);
+  text-align: center;
+  margin: 0 auto;
+  padding-top: calc(72px + 28px);
+}
+
+/* EYEBROW */
+.eyebrow {
+  position: fixed;
+  top: 12px;
+  left: 16px;
+  font-size: 14px;
+  opacity: 0.6;
+  z-index: 1100;
+}
+
+/* ---------------- QUOTE ---------------- */
+.quote { position: relative; display: inline-block; }
+
+/* WORDS */
+.words {
+  font-size: clamp(28px, 5vw, 64px);
+  line-height: 1.1;
+  max-width: 18ch;
+  margin: auto;
+}
+
+
+
+/* QUOTES */
+.q {
+  position: absolute;
+  font-size: clamp(48px, 9vw, 140px);
+  color: #7b4dff;
+  opacity: 0;
+}
+
+.q.left { left: -0.6em; top: -0.25em; }
+.q.right { right: -0.4em; bottom: -0.25em; }
+
+/* CURSOR */
+.cursor {
+  display: inline-block;
+  font-size: 1em;
+  margin-left: 6px;
+}
+
+/* MOBILE */
+@media (max-width: 480px) {
+  .words { max-width: 100%; }
+  .content { padding-top: calc(72px + 16px); }
+}
+
+/* ---------------- ORANGE SCROLL STORY ---------------- */
+.story-section {
+  position: relative;
+  height: 320vh;
+  margin-top: -60px;
+  z-index: 5;
+}
+
+.story-pin {
+  position: sticky;
+  top: 0;
+  min-height: 100vh;
+  background: #ff5a3a;
+  display: grid;
+  grid-template-columns: minmax(280px, 1fr) minmax(320px, 1.1fr);
+  gap: clamp(24px, 5vw, 64px);
+  align-items: center;
+  padding: clamp(80px, 10vw, 140px) clamp(24px, 8vw, 96px);
+  overflow: visible;
+  z-index: 1;
+  /* isolation: isolate; */
+}
+.header { z-index: 99999 !important; transform: translateZ(0); }
+
+.scroll-badge {
+  position: absolute;
+  top: -41px;
+  left: 64px;
+  background: #ff5a3a;
+  color: #1c0a0a;
+  border: 2px solid #1c0a0a;
+  border-bottom: 0;
+  border-radius: 20px 20px 0 0;
+  padding: 12px 22px 14px;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  /* box-shadow: 0 10px 18px rgba(0, 0, 0, 0.35); */
+  z-index: 20;
+  pointer-events: none;
+}
+
+.story-left {
+  color: #2b0c0c;
+  display: grid;
+  gap: 18px;
+  align-content: center;
+}
+
+.story-kicker {
+  font-size: 14px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  opacity: 0.8;
+}
+
+.story-copy {
+  font-size: clamp(22px, 3.5vw, 40px);
+  line-height: 1.2;
+  max-width: 16ch;
+}
+
+.story-typing-wrap {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 6px;
+  font-size: clamp(22px, 3.2vw, 36px);
+  font-weight: 600;
+}
+
+.story-cursor {
+  display: inline-block;
+  opacity: 1;
+}
+
+.story-right {
+  position: relative;
+  min-height: 60vh;
+}
+
+.hand-wrap {
+  width: min(420px, 75%);
+  margin: 0 auto;
+  transform: translateY(60px);
+  opacity: 0;
+}
+
+.hand-wrap img {
+  width: 100%;
+  height: auto;
+  display: block;
+  filter: drop-shadow(0 18px 30px rgba(33, 9, 9, 0.25));
+}
+
+.bubble {
+  position: absolute;
+  border-radius: 50%;
+  width: 110px;
+  height: 110px;
+  display: grid;
+  place-items: center;
+  padding: 10px;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 14px;
+  color: #1c0a0a;
+  transform: scale(0.8);
+  opacity: 0;
+  text-align: center;
+}
+
+.bubble.deep {
+  background: #f7c6ff;
+  top: 18%;
+  left: 2%;
+}
+
+.bubble.assured {
+  background: #5a27ff;
+  color: #fff;
+  bottom: 18%;
+  left: 18%;
+}
+
+.bubble.masc {
+  background: #9b7a3a;
+  color: #fff;
+  top: 28%;
+  right: 6%;
+}
+
+.story-card {
+  background: #fff2ee;
+  border: 2px solid #1c0a0a;
+  border-radius: 16px;
+  padding: 18px 18px;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 13px;
+  box-shadow: 0 16px 30px rgba(33, 9, 9, 0.2);
+  width: min(360px, 90%);
+  transform: rotate(4deg) translateY(10px);
+  opacity: 0;
+}
+
+.story-card ul {
+  list-style: none;
+  display: grid;
+  gap: 8px;
+}
+
+/* ---------------- VIDEO SECTION ---------------- */
+.video-section {
+  background: #ff5a3a;
+  padding: clamp(60px, 10vw, 120px) clamp(24px, 8vw, 96px) clamp(80px, 12vw, 140px);
+  perspective: 1200px;
+  position: relative;
+  z-index: 6;
+}
+
+/* ---------------- PARALLAX LINES SECTION ---------------- */
+.parallax-section {
+  position: relative;
+  height: 120vh;
+  margin-top: -80px;
+  background: #0f0f12;
+  overflow: visible;
+  display: grid;
+  place-items: center;
+  z-index: 6;
+}
+
+.parallax-lines {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 72px;
+  padding: 180px 4vw 0;
+  transform: translateY(10px);
+  overflow: hidden;
+  z-index: 1;
+}
+
+.parallax-badge {
+  position: absolute;
+  top: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #0f0f12;
+  color: #ffffff;
+  border: 2px solid #0f0f12;
+  border-radius: 18px 18px 0 0;
+  padding: 10px 20px;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  box-shadow: 0 10px 18px rgba(0, 0, 0, 0.45);
+  opacity: 1;
+  z-index: 30;
+  pointer-events: none;
+}
+.header,
+.eyebrow {
+  position: fixed;
+  z-index: 99999;
+  transform: translateZ(0); /* create its own compositor layer */
+}
+.parallax-row {
+  width: 140%;
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 20px;
+  align-items: center;
+  transform: rotate(-3deg);
+  opacity: 0.85;
+}
+
+.parallax-card {
+  background: rgba(255, 255, 255, 0.9);
+  color: #101014;
+  border: 2px solid #ffffff;
+  border-radius: 16px;
+  padding: 12px 20px;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: clamp(14px, 1.6vw, 18px);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.35);
+  white-space: nowrap;
+}
+
+.row-1 .parallax-card { border-color: #ff6f3d; box-shadow: 0 12px 24px rgba(255, 111, 61, 0.35); }
+.row-2 .parallax-card { border-color: #5a27ff; box-shadow: 0 12px 24px rgba(90, 39, 255, 0.35); }
+.row-3 .parallax-card { border-color: #f7c6ff; box-shadow: 0 12px 24px rgba(247, 198, 255, 0.35); }
+
+.parallax-video-wrap {
+  position: sticky;
+  top: 18vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  z-index: 5;
+}
+
+.parallax-video {
+  position: relative;
+  width: min(760px, 90%);
+  aspect-ratio: 16 / 9;
+  border-radius: 24px;
+  overflow: hidden;
+  border: 2px solid #ffffff;
+  box-shadow: 0 24px 50px rgba(0, 0, 0, 0.4);
+}
+
+.parallax-video iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+
+/* ---------------- STACKED CARD SECTION ---------------- */
+.stack-section {
+  position: relative;
+  height: 300vh;
+  background: #0f0f12;
+}
+
+.stack-pin {
+  position: sticky;
+  top: 0;
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+}
+
+.stack-card {
+  position: absolute;
+  width: min(920px, 94%);
+  background: #ffffff;
+  color: #101014;
+  border: 2px solid #101014;
+  border-radius: 20px;
+  padding: clamp(28px, 4vw, 54px);
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: clamp(24px, 3.6vw, 46px);
+  line-height: 1.2;
+  text-align: center;
+  box-shadow: 0 24px 40px rgba(0, 0, 0, 0.45);
+  opacity: 0;
+  transform: translateY(220px) rotate(2deg);
+  z-index: 2;
+}
+
+.stack-card.alt {
+  background: #ffe08a;
+}
+
+.stack-card.pink {
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(255, 207, 243, 0.98) 0,
+      rgba(255, 207, 243, 0.98) 100%
+    ),
+    repeating-linear-gradient(
+      to bottom,
+      rgba(0,0,0,0.18) 0px,
+      rgba(0,0,0,0.18) 1px,
+      transparent 1px,
+      transparent 26px
+    );
+  border-color: rgba(0,0,0,0.45);
+}
+
+.stack-hand-wrap {
+  position: absolute;
+  left: 50%;
+  bottom: 10%;
+  transform: translateX(-75%);
+  width: min(980px, 96%);
+  display: flex;
+  align-items: flex-end;
+  gap: clamp(4px, 1.2vw, 12px);
+  opacity: 0;
+  z-index: 2;
+}
+
+.stack-hand {
+  width: min(300px, 34vw);
+  height: auto;
+  transform: translate(56px, 0px) rotate(24deg);
+  position: relative;
+  z-index: 3;
+  margin-bottom: -24px;
+}
+
+.stack-hand-wrap .stack-card {
+  position: relative;
+  transform: rotate(4deg);
+  min-height: 220px;
+  z-index: 2;
+}
+
+/* ---------------- FAQ SECTION ---------------- */
+.faq-section {
+  position: relative;
+  background: #fde7f6;
+  color: #4b1a74;
+  padding: clamp(80px, 12vw, 160px) clamp(24px, 8vw, 110px);
+  overflow: hidden;
+}
+
+.faq-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 18% 18%, rgba(247, 198, 255, 0.55), transparent 52%),
+    radial-gradient(circle at 82% 28%, rgba(141, 83, 255, 0.28), transparent 55%),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0));
+  pointer-events: none;
+}
+
+.faq-inner {
+  position: relative;
+  display: grid;
+  gap: clamp(28px, 4vw, 48px);
+  z-index: 1;
+}
+
+.faq-header {
+  max-width: 720px;
+  display: grid;
+  gap: 12px;
+}
+
+.faq-kicker {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 12px;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: #6b2cff;
+}
+
+.faq-title {
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: clamp(28px, 4.8vw, 54px);
+  line-height: 1.05;
+  margin: 0;
+}
+
+.faq-subtitle {
+  color: rgba(75, 26, 116, 0.7);
+  font-size: clamp(16px, 2vw, 20px);
+  margin: 0;
+}
+
+.faq-list {
+  display: grid;
+  gap: clamp(16px, 2.6vw, 22px);
+}
+
+.faq-item {
+  background: #ffffff;
+  border: 2px solid rgba(107, 44, 255, 0.18);
+  border-radius: 18px;
+  padding: clamp(16px, 2.6vw, 22px);
+  box-shadow: 0 18px 40px rgba(107, 44, 255, 0.12);
+}
+
+.faq-question {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: clamp(16px, 2.4vw, 22px);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #4b1a74;
+  margin: 0;
+  list-style: none;
+  cursor: pointer;
+}
+
+.faq-question::-webkit-details-marker {
+  display: none;
+}
+
+.faq-question::after {
+  content: "+";
+  font-size: 18px;
+  font-weight: 700;
+  color: #6b2cff;
+  transition: transform 0.2s ease;
+}
+
+.faq-item[open] .faq-question::after {
+  content: "–";
+  transform: translateY(-1px);
+}
+
+.faq-answer {
+  color: rgba(75, 26, 116, 0.75);
+  font-size: clamp(15px, 2.1vw, 19px);
+  line-height: 1.6;
+  margin: 10px 0 0;
+  padding-right: clamp(8px, 2vw, 24px);
+}
+
+/* ---------------- CONTACT SECTION ---------------- */
+.contact-section {
+  position: relative;
+  background: #6a4b3a;
+  color: #f8f5f0;
+  padding: clamp(80px, 12vw, 160px) clamp(24px, 8vw, 110px);
+  overflow: hidden;
+}
+
+.contact-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(255, 224, 188, 0.28), transparent 55%),
+    radial-gradient(circle at 80% 25%, rgba(255, 182, 155, 0.24), transparent 55%),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0));
+  pointer-events: none;
+}
+
+.contact-inner {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: clamp(28px, 4vw, 52px);
+  z-index: 1;
+  align-items: center;
+}
+
+.contact-header {
+  display: grid;
+  gap: 14px;
+  max-width: 520px;
+}
+
+.contact-kicker {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 12px;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: #f7c6ff;
+}
+
+.contact-title {
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: clamp(28px, 4.8vw, 56px);
+  line-height: 1.05;
+  margin: 0;
+}
+
+.contact-subtitle {
+  color: rgba(248, 245, 240, 0.72);
+  font-size: clamp(16px, 2.2vw, 22px);
+  margin: 0;
+}
+
+.contact-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 22px;
+  border-radius: 999px;
+  border: 2px solid #f7c6ff;
+  color: #f7c6ff;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  width: fit-content;
+}
+
+.contact-card {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 24px;
+  padding: clamp(22px, 4vw, 40px);
+  box-shadow: 0 24px 50px rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(8px);
+}
+
+.contact-form {
+  display: grid;
+  gap: 16px;
+}
+
+.contact-field {
+  display: grid;
+  gap: 8px;
+}
+
+.contact-label {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(248, 245, 240, 0.75);
+}
+
+.contact-input {
+  width: 100%;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  background: rgba(15, 15, 18, 0.6);
+  color: #ffffff;
+  padding: 14px 16px;
+  font-size: 16px;
+  font-family: "IBM Plex Sans", sans-serif;
+}
+
+.contact-input::placeholder {
+  color: rgba(255, 255, 255, 0.45);
+}
+
+.contact-submit {
+  border: none;
+  border-radius: 999px;
+  padding: 14px 26px;
+  background: #f4e2cf;
+  color: #4b2f22;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  cursor: pointer;
+  border: 1px solid rgba(75, 47, 34, 0.35);
+  box-shadow: 0 16px 30px rgba(75, 47, 34, 0.25);
+}
+
+/* ---------------- FOOTER ---------------- */
+.footer-section {
+  background: #2b1636;
+  color: #f6ecf5;
+  padding: clamp(60px, 10vw, 120px) clamp(24px, 8vw, 110px);
+}
+
+.footer-inner {
+  display: grid;
+  gap: clamp(20px, 3vw, 36px);
+}
+
+.footer-row {
+  display: grid;
+  gap: 12px;
+}
+
+.footer-row.logo-row {
+  justify-items: center;
+  text-align: center;
+}
+
+.footer-copy {
+  font-size: clamp(16px, 2.2vw, 20px);
+  line-height: 1.6;
+  color: rgba(246, 236, 245, 0.78);
+  margin: 0;
+}
+
+.footer-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: clamp(24px, 3.4vw, 36px);
+  color: #f7c6ff;
+  letter-spacing: 0.04em;
+}
+
+.footer-logo img {
+  width: 120px;
+  height: auto;
+}
+
+.footer-logo-mark {
+  width: 46px;
+  height: 46px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #f7c6ff, #ff9f7a);
+  display: grid;
+  place-items: center;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 18px;
+  color: #2a1e2a;
+}
+
+.footer-subline {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 12px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(246, 236, 245, 0.6);
+}
+
+.footer-bottom {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid rgba(246, 236, 245, 0.16);
+  padding-top: 18px;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(246, 236, 245, 0.6);
+}
+
+.footer-bottom a,
+.footer-link {
+  color: #f7c6ff;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(247, 198, 255, 0.5);
+}
+
+/* ---------------- DOVES ---------------- */
+.dove {
+  position: fixed;
+  top: 24px;
+  width: clamp(48px, 6vw, 90px);
+  height: auto;
+  opacity: 0.75;
+  z-index: 99998;
+  pointer-events: none;
+}
+
+.dove-left {
+  right: 18px;
+  left: auto;
+  transform: rotate(18deg);
+}
+
+.dove-right {
+  left: 18px;
+  right: auto;
+  transform: rotate(-18deg) scaleX(-1);
+}
+
+@media (max-width: 900px) {
+  .story-pin {
+    grid-template-columns: 1fr;
+    text-align: left;
+  }
+
+  .story-right {
+    min-height: 45vh;
+  }
+
+  .dove {
+    top: 54px;
+  }
+
+  .scroll-badge {
+    top: -30px;
+  }
+
+  .bubble.masc {
+    top: 5%;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<img class="dove dove-left" src="images/dove%20(1).png" alt="Dove" />
+<img class="dove dove-right" src="images/dove%20(1).png" alt="Dove" />
+
+<!-- FIXED HEADER -->
+<header class="header">
+  <nav>
+    <span>Helpline</span> 
+
+    <span>FAQ
+</span>
+    <a href="tel:+919621795550">Speak to Counsellor</a>
+    <span>Schedule Call
+</span>
+  </nav>
+</header>
+
+<div class="page">
+  <section class="hero" id="hero">
+    <div class="content">
+      <div class="eyebrow" style="font-size: larger;" >The right information matters.
+</div>
+
+      <div class="quote">
+        <span class="q left">“</span>
+
+        <h1 class="words" id="text"></h1>
+        <span class="cursor">|</span>
+
+        <span class="q right">”</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="story-section" id="story">
+    <div class="story-pin">
+      <a class="scroll-badge" href="tel:+919621795550">Speak to a Counsellor</a>
+      <div class="story-left">
+        <span class="story-kicker">Our Mission</span>
+        <!-- <p class="story-copy" id="story-copy">
+          What does the voice of power and authority sound like in your head?
+        </p> -->
+        <div class="story-typing-wrap">
+          <span id="story-typing"></span>
+          <span class="story-cursor">|</span>
+        </div>
+
+        <div class="story-card" id="story-card">
+          <ul>
+            <li> Speak to a Counsellor Anonymously
+</li>
+            
+          </ul>
+        </div>
+      </div>
+
+      <div class="story-right">
+        <div class="hand-wrap" id="hand">
+          <img src="images/Khushi Helpline Section 2 Image.png" alt="Woman's hand" />
+        </div>
+
+        <div class="bubble deep" id="bubble-deep">“Periods?”</div>
+        <div class="bubble assured" id="bubble-assured">“Pregnancy?”</div>
+        <div class="bubble masc" id="bubble-masc">“Abortion?”</div>
+
+      </div>
+    </div>
+  </section>
+  
+  <section class="parallax-section" id="parallax">
+    <div class="parallax-badge">You are Not Alone
+</div>
+    <div class="parallax-lines" id="parallax-lines">
+      <div class="parallax-row row-1" data-speed="1">
+        <span class="parallax-card">Complete Confidentiality</span>
+        <span class="parallax-card">No Judgement</span>
+        <span class="parallax-card">Trained Counsellors</span>
+        <span class="parallax-card">Complete Privacy</span>
+        <span class="parallax-card">Your Choice Matters</span>
+        <span class="parallax-card">Safe Space</span>
+        <span class="parallax-card">Complete Confidentiality</span>
+        <span class="parallax-card">No Judgement</span>
+        <span class="parallax-card">Trained Counsellors</span>
+        <span class="parallax-card">Complete Privacy</span>
+        <span class="parallax-card">Your Choice Matters</span>
+        <span class="parallax-card">Safe Space</span>
+         <span class="parallax-card">Complete Confidentiality</span>
+        <span class="parallax-card">No Judgement</span>
+        <span class="parallax-card">Trained Counsellors</span>
+        <span class="parallax-card">Complete Privacy</span>
+        <span class="parallax-card">Your Choice Matters</span>
+        <span class="parallax-card">Safe Space</span>
+        <span class="parallax-card">Complete Confidentiality</span>
+        <span class="parallax-card">No Judgement</span>
+        <span class="parallax-card">Trained Counsellors</span>
+        <span class="parallax-card">Complete Privacy</span>
+        <span class="parallax-card">Your Choice Matters</span>
+        <span class="parallax-card">Safe Space</span>
+      </div>
+
+      <div class="parallax-row row-2" data-speed="-1">
+        <span class="parallax-card">Support At Your Pace</span>
+        <span class="parallax-card">Correct Information</span>
+        <span class="parallax-card">Complete Confidentiality</span>
+        <span class="parallax-card">No Judgement</span>
+        <span class="parallax-card">Trained Counsellors</span>
+        <span class="parallax-card">Complete Privacy</span>
+        <span class="parallax-card">Support At Your Pace</span>
+        <span class="parallax-card">Correct Information</span>
+        <span class="parallax-card">Complete Confidentiality</span>
+        <span class="parallax-card">No Judgement</span>
+        <span class="parallax-card">Trained Counsellors</span>
+        <span class="parallax-card">Complete Privacy</span>
+        <span class="parallax-card">Support At Your Pace</span>
+        <span class="parallax-card">Correct Information</span>
+        <span class="parallax-card">Complete Confidentiality</span>
+        <span class="parallax-card">No Judgement</span>
+        <span class="parallax-card">Trained Counsellors</span>
+        <span class="parallax-card">Complete Privacy</span>
+        <span class="parallax-card">Support At Your Pace</span>
+        <span class="parallax-card">Correct Information</span>
+        <span class="parallax-card">Complete Confidentiality</span>
+        <span class="parallax-card">No Judgement</span>
+        <span class="parallax-card">Trained Counsellors</span>
+        <span class="parallax-card">Complete Privacy</span>
+      </div>
+
+      <div class="parallax-row row-3" data-speed="1.2">
+        <span class="parallax-card">Your Choice Matters</span>
+        <span class="parallax-card">Safe Space</span>
+        <span class="parallax-card">Support At Your Pace</span>
+        <span class="parallax-card">Correct Information</span>
+        <span class="parallax-card">Complete Confidentiality</span>
+        <span class="parallax-card">No Judgement</span>
+        <span class="parallax-card">Your Choice Matters</span>
+        <span class="parallax-card">Safe Space</span>
+        <span class="parallax-card">Support At Your Pace</span>
+        <span class="parallax-card">Correct Information</span>
+        <span class="parallax-card">Complete Confidentiality</span>
+        <span class="parallax-card">No Judgement</span>
+         <span class="parallax-card">Your Choice Matters</span>
+        <span class="parallax-card">Safe Space</span>
+        <span class="parallax-card">Support At Your Pace</span>
+        <span class="parallax-card">Correct Information</span>
+        <span class="parallax-card">Complete Confidentiality</span>
+        <span class="parallax-card">No Judgement</span>
+        <span class="parallax-card">Your Choice Matters</span>
+        <span class="parallax-card">Safe Space</span>
+        <span class="parallax-card">Support At Your Pace</span>
+        <span class="parallax-card">Correct Information</span>
+        <span class="parallax-card">Complete Confidentiality</span>
+        <span class="parallax-card">No Judgement</span>
+      </div>
+    </div>
+
+    <div class="parallax-video-wrap">
+      <div class="parallax-video">
+        <iframe
+          title="YouTube video"
+          allow="autoplay; encrypted-media; fullscreen; picture-in-picture"
+          allowfullscreen
+          src="https://www.youtube.com/embed/EngW7tLk6R8?autoplay=1&mute=1&playsinline=1&rel=0"
+        ></iframe>
+      </div>
+    </div>
+
+  </section>
+
+  <section class="stack-section" id="stack">
+    <div class="stack-pin">
+      <div class="stack-card pink" id="stack-card-0">
+        A trusted place for the right information and support.
+      </div>
+      <div class="stack-card" id="stack-card-1">
+        Conversations are private, confidential, and judgement-free.
+      </div>
+      <div class="stack-card alt" id="stack-card-2">
+        Speaking to a trained counsellor helps ensure information is appropriate and medically correct.
+      </div>
+      <div class="stack-hand-wrap" id="stack-hand-wrap">
+        <img class="stack-hand" src="images/hand1.png" alt="Hand catching card" />
+        <a class="stack-card" id="stack-card-3" href="tel:+919621795550">
+      Talk to a trusted counsellor 
+      +919621795550
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="faq-section" id="faq">
+    <div class="faq-inner">
+      <div class="faq-header">
+        <span class="faq-kicker">FAQ</span>
+        <h2 class="faq-title">Questions people ask us most</h2>
+        <p class="faq-subtitle">Short answers, no judgement, and support at your pace.</p>
+      </div>
+
+      <div class="faq-list">
+        <details class="faq-item">
+          <summary class="faq-question">Is the helpline confidential?</summary>
+          <p class="faq-answer">Yes. Conversations are private and anonymous. We never share your information.</p>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-question">What topics can I ask about?</summary>
+          <p class="faq-answer">Periods, pregnancy, contraception, abortion, and any questions you feel unsure about.</p>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-question">Do I have to decide right away?</summary>
+          <p class="faq-answer">No. We help you understand options and support your decision at your pace.</p>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-question">Is this a judgment-free space?</summary>
+          <p class="faq-answer">Always. Our counsellors are trained to listen, support, and never judge.</p>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-question">How do I reach a counsellor?</summary>
+          <p class="faq-answer">Call or schedule a call. We are here when you are ready.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact-section" id="contact">
+    <div class="contact-inner">
+      <div class="contact-header">
+        <span class="contact-kicker">Connect With Us</span>
+        <h2 class="contact-title">We are Here to Help You</h2>
+        <p class="contact-subtitle">Schedule a Call</p>
+        <div class="contact-cta">Speak to a Counsellor</div>
+      </div>
+
+      <div class="contact-card">
+        <form class="contact-form">
+          <div class="contact-field">
+            <label class="contact-label" for="contact-name">Name</label>
+            <input class="contact-input" id="contact-name" name="name" type="text" placeholder="Your full name" />
+          </div>
+          <div class="contact-field">
+            <label class="contact-label" for="contact-email">Email</label>
+            <input class="contact-input" id="contact-email" name="email" type="email" placeholder="you@example.com" />
+          </div>
+          <div class="contact-field">
+            <label class="contact-label" for="contact-phone">Phone Number</label>
+            <input class="contact-input" id="contact-phone" name="phone" type="tel" placeholder="+91" />
+          </div>
+          <button class="contact-submit" type="submit">Send</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer-section" id="footer">
+    <div class="footer-inner">
+      <div class="footer-row">
+        <p class="footer-copy">
+          Sahi Helpline connects you to trained experts for periods, pregnancy, and safe abortion — privately. The helpline connects callers to trained counsellors who listen carefully, share medically accurate information, and help individuals understand their options based on their unique situations. There is no pressure, no obligation, and no one-size-fits-all advice.
+        </p>
+      </div>
+
+      <div class="footer-row logo-row">
+        <div class="footer-logo">
+          <img src="images/kushilogo.png" alt="Khushi logo" />
+        </div>
+        <div class="footer-subline">Khushi MT Kit</div>
+      </div>
+
+      <div class="footer-row">
+        <p class="footer-copy">
+          Conversations are kept completely confidential, and no personal information is collected or stored through the website. Sahi Helpline exists to ensure that when decisions are personal and sensitive, the information and support available are trustworthy, calm, and human.
+        </p>
+      </div>
+
+      <div class="footer-row footer-bottom">
+        <span>©2026 Sahi Helpline | Privacy Policy</span>
+        <span>Website Design and Development by Global Honey Bee — <a class="footer-link" href="https://ghb.digital" target="_blank" rel="noopener">ghb.digital</a></span>
+      </div>
+    </div>
+  </footer>
+</div>
+
+<script>
+/* ---------------- TEXT TO WORDS ---------------- */
+const text =
+  "Questions about periods, pregnancy and abortion are common. Finding the right information is not.";
+
+const container = document.getElementById("text");
+const hero = document.getElementById("hero");
+container.textContent = "";
+const header = document.querySelector(".header");
+const headerOffset = header ? header.offsetHeight + 28 : 76;
+
+/* ---------------- INITIAL STATES ---------------- */
+gsap.set(".q", { opacity: 0 });
+gsap.set(container, { opacity: 1 });
+gsap.set(hero, { y: 0 });
+
+/* CURSOR BLINK */
+gsap.to(".cursor", {
+  opacity: 0,
+  repeat: -1,
+  yoyo: true,
+  duration: 0.6,
+  ease: "power1.inOut"
+});
+
+/* ---------------- TIMELINE ---------------- */
+const tl = gsap.timeline({ delay: 0.4 });
+
+/* Hero zooms out to reveal background on all sides */
+tl.to(hero, {
+  duration: 1.2,
+  ease: "power3.out",
+  scale: 0.85,
+  y: headerOffset,
+  borderRadius: 40,
+  padding: "clamp(24px, 5vw, 90px)"
+});
+
+/* GSAP typewriter */
+const typeState = { i: 0 };
+tl.to(typeState, {
+  i: text.length,
+  duration: 3.2,
+  ease: "none",
+  onUpdate: () => {
+    container.textContent = text.slice(0, Math.floor(typeState.i));
+  }
+}, "-=0.2");
+
+/* QUOTES IN */
+tl.to(".q.left", { opacity: 1, x: 10, duration: 0.3 }, "-=2.6");
+tl.to(".q.right", { opacity: 1, x: -10, duration: 0.3 }, "-=2.4");
+
+/* CURSOR OFF */
+tl.to(".cursor", { opacity: 0, duration: 0.2 }, "+=0.2");
+
+/* ---------------- SCROLL STORY ---------------- */
+gsap.registerPlugin(ScrollTrigger);
+
+const storyText = "What can you speak to a Sahi Helpline counsellor about?";
+const storyTyping = document.getElementById("story-typing");
+const storyCursor = document.querySelector(".story-cursor");
+
+gsap.set(["#hand", "#bubble-deep", "#bubble-assured", "#bubble-masc", "#story-card"], {
+  opacity: 0
+});
+gsap.set("#story-copy", { opacity: 0 });
+
+gsap.to(storyCursor, {
+  opacity: 0,
+  repeat: -1,
+  yoyo: true,
+  duration: 0.6,
+  ease: "power1.inOut"
+});
+
+const storyState = { i: 0 };
+
+const storyTl = gsap.timeline({
+  scrollTrigger: {
+    trigger: "#story",
+    start: "top top",
+    end: "+=220%",
+    scrub: true,
+    pin: ".story-pin"
+  }
+});
+
+storyTl
+  .to("#story-copy", { opacity: 1, duration: 0.4 })
+  .to(storyState, {
+    i: storyText.length,
+    duration: 0.8,
+    ease: "none",
+    onUpdate: () => {
+      storyTyping.textContent = storyText.slice(0, Math.floor(storyState.i));
+    }
+  }, "-=0.2")
+  .to(["#hand"], { opacity: 1, y: 0, duration: 0.6 }, "-=0.1")
+  .to(["#bubble-deep", "#bubble-assured", "#bubble-masc"], {
+    opacity: 1,
+    scale: 1,
+    duration: 0.4,
+    stagger: 0.15
+  }, "-=0.2")
+  .to("#story-card", { opacity: 1, y: 0, duration: 0.6 }, "+=0.2");
+
+/* ---------------- PARALLAX LINES ---------------- */
+const parallaxRows = gsap.utils.toArray(".parallax-row");
+
+parallaxRows.forEach((row) => {
+  const speed = parseFloat(row.dataset.speed || "1");
+  const original = row.innerHTML;
+  row.innerHTML = `${original} ${original}`;
+
+  requestAnimationFrame(() => {
+    const rowWidth = row.scrollWidth / 2;
+    const wrapX = gsap.utils.wrap(-rowWidth, 0);
+    gsap.set(row, { x: 0 });
+    gsap.to(row, {
+      x: speed * rowWidth,
+      ease: "none",
+      scrollTrigger: {
+        trigger: "#parallax",
+        start: "top bottom",
+        end: "bottom top",
+        scrub: true
+      },
+      modifiers: {
+        x: (x) => `${wrapX(parseFloat(x))}px`
+      }
+    });
+  });
+});
+
+const stackTl = gsap.timeline({
+  scrollTrigger: {
+    trigger: "#stack",
+    start: "top top",
+    end: "+=200%",
+    scrub: true,
+    pin: ".stack-pin"
+  }
+});
+
+stackTl
+  .to("#stack-card-0", { opacity: 1, y: 0, rotate: -4, duration: 0.7, ease: "power3.out" })
+  .to("#stack-card-0", { rotate: 4, duration: 0.3, ease: "power2.out" })
+  .to("#stack-card-1", { opacity: 1, y: 0, rotate: 2, duration: 0.7, ease: "power3.out" })
+  .to("#stack-card-1", { rotate: 3, duration: 0.3, ease: "power2.out" })
+  .to("#stack-card-2", { opacity: 1, y: -30, rotate: -2, duration: 0.7, ease: "power3.out" }, "+=0.3")
+  .to("#stack-card-2", { rotate: -3, duration: 0.3, ease: "power2.out" })
+  .to("#stack-hand-wrap", { opacity: 1, y: -60, duration: 0.7, ease: "power3.out" }, "+=0.3")
+  .to("#stack-card-3", { opacity: 1, rotate: 6, duration: 0.3, ease: "power2.out" }, "<")
+  .to(".stack-hand", { y: 0, duration: 0.3, ease: "power2.out" }, "<");
+
+gsap.fromTo(".faq-header", {
+  opacity: 0,
+  y: 40
+}, {
+  opacity: 1,
+  y: 0,
+  duration: 0.8,
+  ease: "power3.out",
+  scrollTrigger: {
+    trigger: "#faq",
+    start: "top 70%",
+    end: "top 40%",
+    scrub: true
+  }
+});
+
+gsap.fromTo(".faq-item", {
+  opacity: 0,
+  y: 50
+}, {
+  opacity: 1,
+  y: 0,
+  duration: 0.8,
+  ease: "power3.out",
+  stagger: 0.12,
+  scrollTrigger: {
+    trigger: "#faq",
+    start: "top 60%",
+    end: "bottom 30%",
+    scrub: true
+  }
+});
+
+gsap.fromTo(".contact-header", {
+  opacity: 0,
+  y: 40
+}, {
+  opacity: 1,
+  y: 0,
+  duration: 0.9,
+  ease: "power3.out",
+  scrollTrigger: {
+    trigger: "#contact",
+    start: "top 70%",
+    end: "top 40%",
+    scrub: true
+  }
+});
+
+gsap.fromTo(".contact-card", {
+  opacity: 0,
+  y: 50
+}, {
+  opacity: 1,
+  y: 0,
+  duration: 0.9,
+  ease: "power3.out",
+  scrollTrigger: {
+    trigger: "#contact",
+    start: "top 65%",
+    end: "top 35%",
+    scrub: true
+  }
+});
+
+</script>
+
+</body>
+</html>
