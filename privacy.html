@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Privacy Policy - Sahi Helpline</title>
+<meta name="description" content="Privacy Policy for Sahi Helpline - Your confidential support for periods, pregnancy, and safe abortion information." />
+<meta name="robots" content="index, follow" />
+<meta name="theme-color" content="#6a4b3a" />
+
+<link rel="canonical" href="https://example.com/privacy.html" />
+
+<meta property="og:title" content="Privacy Policy - Sahi Helpline" />
+<meta property="og:description" content="Learn how Sahi Helpline protects your privacy and handles your information." />
+<meta property="og:type" content="website" />
+<meta property="og:image" content="images/kushilogo.png" />
+<meta property="og:url" content="https://example.com/privacy.html" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+a { text-decoration: none; }
+
+:root {
+  --pink-1: #ffd6ff;
+  --pink-2: #e7c6ff;
+  --lav-1: #c8b6ff;
+  --lav-2: #b9c0ff;
+  --lav-3: #bbcfff;
+  --ink: #2b1c4d;
+  --ink-soft: #3b2a63;
+  --font-serif: "IBM Plex Serif", serif;
+  --font-primary: "Inter", sans-serif;
+}
+
+body {
+  background: var(--lav-1);
+  font-family: var(--font-serif);
+  overflow-x: hidden;
+}
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  z-index: 1000;
+  padding: 0;
+}
+
+.header nav {
+  background: rgba(255, 255, 255, 0.82);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  box-shadow: 0 18px 40px rgba(59, 42, 99, 0.18);
+  padding: 14px 36px;
+  border-radius: 0 0 10px 10px;
+  display: flex;
+  gap: 28px;
+  font-size: 14px;
+}
+
+.header nav a {
+  color: #000000;
+  text-decoration: none;
+}
+
+.privacy-page {
+  min-height: 100vh;
+  padding: 100px 20px 60px;
+  background: var(--lav-2);
+}
+
+.privacy-container {
+  max-width: 900px;
+  margin: 0 auto;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 24px;
+  padding: clamp(40px, 6vw, 80px);
+  box-shadow: 0 24px 50px rgba(59, 42, 99, 0.25);
+}
+
+.privacy-header {
+  text-align: center;
+  margin-bottom: 40px;
+  padding-bottom: 30px;
+  border-bottom: 2px solid var(--lav-1);
+}
+
+.privacy-title {
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: clamp(32px, 5vw, 48px);
+  color: var(--ink);
+  margin-bottom: 10px;
+}
+
+.privacy-updated {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 14px;
+  color: rgba(43, 28, 77, 0.7);
+  letter-spacing: 0.05em;
+}
+
+.privacy-intro {
+  font-size: clamp(16px, 2.2vw, 19px);
+  line-height: 1.7;
+  color: rgba(0, 0, 0, 0.8);
+  margin-bottom: 40px;
+}
+
+.privacy-section {
+  margin-bottom: 35px;
+}
+
+.privacy-section h2 {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: clamp(18px, 2.4vw, 22px);
+  color: var(--ink);
+  margin-bottom: 15px;
+  letter-spacing: 0.02em;
+}
+
+.privacy-section p {
+  font-size: clamp(15px, 2vw, 18px);
+  line-height: 1.7;
+  color: rgba(0, 0, 0, 0.75);
+  margin-bottom: 12px;
+}
+
+.privacy-section ul {
+  list-style: none;
+  margin: 15px 0;
+  padding-left: 0;
+}
+
+.privacy-section ul li {
+  font-size: clamp(15px, 2vw, 18px);
+  line-height: 1.7;
+  color: rgba(0, 0, 0, 0.75);
+  margin-bottom: 10px;
+  padding-left: 25px;
+  position: relative;
+}
+
+.privacy-section ul li::before {
+  content: "•";
+  position: absolute;
+  left: 8px;
+  color: var(--lav-1);
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.privacy-final {
+  background: var(--pink-1);
+  border: 2px solid var(--lav-1);
+  border-radius: 16px;
+  padding: 25px;
+  margin-top: 40px;
+  text-align: center;
+}
+
+.privacy-final p {
+  font-size: clamp(16px, 2.2vw, 20px);
+  line-height: 1.6;
+  color: var(--ink);
+  margin: 0;
+  font-weight: 500;
+}
+
+.footer-section {
+  background: var(--ink);
+  color: #f6ecf5;
+  padding: clamp(60px, 10vw, 120px) clamp(24px, 8vw, 110px);
+}
+
+.footer-inner {
+  display: grid;
+  gap: clamp(20px, 3vw, 36px);
+}
+
+.footer-row {
+  display: grid;
+  gap: 12px;
+}
+
+.footer-row.logo-row {
+  justify-items: center;
+  text-align: center;
+}
+
+.footer-copy {
+  font-size: clamp(16px, 2.2vw, 20px);
+  line-height: 1.6;
+  color: rgba(246, 236, 245, 0.78);
+  margin: 0;
+}
+
+.footer-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: clamp(24px, 3.4vw, 36px);
+  color: var(--pink-1);
+  letter-spacing: 0.04em;
+}
+
+.footer-logo img {
+  width: 120px;
+  height: auto;
+}
+
+.footer-subline {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 12px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(246, 236, 245, 0.7);
+}
+
+.footer-bottom {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid rgba(246, 236, 245, 0.16);
+  padding-top: 18px;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(246, 236, 245, 0.6);
+}
+
+.footer-bottom a,
+.footer-link {
+  color: var(--pink-1);
+  text-decoration: none;
+  border-bottom: none;
+}
+
+.whatsapp-fab {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: #25d366;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 16px 28px rgba(0, 0, 0, 0.35);
+  z-index: 99999;
+  text-decoration: none;
+}
+
+.whatsapp-fab svg {
+  width: 28px;
+  height: 28px;
+  fill: #ffffff;
+  display: block;
+}
+
+.whatsapp-fab i {
+  font-size: 28px;
+  color: #ffffff;
+  line-height: 1;
+}
+
+.dove {
+  position: fixed;
+  top: 40px;
+  width: clamp(36px, 4.5vw, 70px);
+  height: auto;
+  opacity: 0.75;
+  z-index: 99998;
+  pointer-events: none;
+}
+
+.dove-left {
+  right: 18px;
+  left: auto;
+  transform: rotate(-18deg) scaleX(-1);
+}
+
+.dove-right {
+  left: 18px;
+  right: auto;
+  transform: rotate(18deg);
+}
+
+@media (max-width: 600px) {
+  .whatsapp-fab {
+    width: 52px;
+    height: 52px;
+    right: 18px;
+    bottom: 18px;
+  }
+
+  .whatsapp-fab svg {
+    width: 26px;
+    height: 26px;
+  }
+
+  .dove {
+    top: 65px;
+  }
+}
+</style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+
+<img class="dove dove-left" src="images/dove.png" alt="Dove" loading="lazy" decoding="async" />
+<img class="dove dove-right" src="images/dove.png" alt="Dove" loading="lazy" decoding="async" />
+
+<a class="whatsapp-fab" href="https://wa.me/919621795550" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+  <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
+</a>
+
+<header class="header">
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="index.html#parallax">Helpline</a>
+    <a href="index.html#faq">FAQ</a>
+    <a href="tel:+919621795550">Speak to Counsellor</a>
+    <a href="index.html#contact">Schedule Call</a>
+  </nav>
+</header>
+
+<main class="privacy-page">
+  <div class="privacy-container">
+    <div class="privacy-header">
+      <h1 class="privacy-title">Privacy Policy</h1>
+      <p class="privacy-updated">Last updated: 26 Jan 2026</p>
+    </div>
+
+    <p class="privacy-intro">Sahi Helpline is committed to protecting your privacy and ensuring that any interaction with us is handled with care, respect, and confidentiality. This Privacy Policy explains how we collect, use, and protect information when you access our website or contact our helpline.</p>
+
+    <section class="privacy-section">
+      <h2>1. Our Commitment to Privacy</h2>
+      <p>We understand that issues related to sexual and reproductive health are deeply personal.</p>
+      <p>Sahi Helpline follows a privacy-first approach, designed to ensure that individuals can seek information and support without fear of exposure, judgement, or misuse of their information.</p>
+    </section>
+
+    <section class="privacy-section">
+      <h2>2. Information We Do Not Collect</h2>
+      <p>Sahi Helpline does not require you to provide personal information to access general content on our website.</p>
+      <p>Specifically, we do not:</p>
+      <ul>
+        <li>Ask for your name, address, or identity details</li>
+        <li>Collect health records or medical history</li>
+        <li>Require registration or account creation</li>
+        <li>Track users across websites for advertising purposes</li>
+      </ul>
+    </section>
+
+    <section class="privacy-section">
+      <h2>3. Information Shared During Helpline Calls or Chats</h2>
+      <p>When you call or chat with Sahi Helpline:</p>
+      <ul>
+        <li>Conversations are treated as strictly confidential</li>
+        <li>You are not required to share your name or personal identifiers</li>
+        <li>Any information you choose to share is used only to provide appropriate guidance and support</li>
+        <li>Calls are not recorded for monitoring or training purposes, unless explicitly stated otherwise and with consent</li>
+      </ul>
+      <p>The purpose of the interaction is to offer medically correct information and guidance, not to collect personal data.</p>
+    </section>
+
+    <section class="privacy-section">
+      <h2>4. Website Usage Information</h2>
+      <p>Our website may collect limited, non-identifiable technical information such as:</p>
+      <ul>
+        <li>Page visits</li>
+        <li>Video views</li>
+        <li>General traffic patterns</li>
+      </ul>
+      <p>This information is collected in an aggregated manner to help us understand how the website is used and to improve access and clarity.</p>
+      <p>It does not identify individual users.</p>
+      <p>We do not use cookies or trackers for targeted advertising related to sensitive health topics.</p>
+    </section>
+
+    <section class="privacy-section">
+      <h2>5. How We Use Information</h2>
+      <p>Any information voluntarily shared with Sahi Helpline is used solely to:</p>
+      <ul>
+        <li>Respond to your queries</li>
+        <li>Provide relevant, medically correct information</li>
+        <li>Improve the quality and accessibility of our services</li>
+      </ul>
+      <p>We do not sell, rent, or share information with third parties for marketing or commercial purposes.</p>
+    </section>
+
+    <section class="privacy-section">
+      <h2>6. Information Sharing and Disclosure</h2>
+      <p>We do not disclose information shared with Sahi Helpline to third parties, except:</p>
+      <ul>
+        <li>When required by law or legal process</li>
+        <li>To protect the safety of individuals in cases of immediate harm, where applicable and lawful</li>
+      </ul>
+      <p>Such situations are rare and handled with the utmost care.</p>
+    </section>
+
+    <section class="privacy-section">
+      <h2>7. Data Security</h2>
+      <p>We take reasonable and appropriate measures to protect information from unauthorized access, misuse, or disclosure.</p>
+      <p>Access to helpline operations and any related systems is limited to authorized personnel only.</p>
+    </section>
+
+    <section class="privacy-section">
+      <h2>8. Your Choices</h2>
+      <ul>
+        <li>You may access our website without providing any personal information</li>
+        <li>You may contact the helpline anonymously</li>
+        <li>You may choose how much or how little information to share during conversations</li>
+      </ul>
+      <p>Seeking information from Sahi Helpline is entirely voluntary.</p>
+    </section>
+
+    <section class="privacy-section">
+      <h2>9. External Links</h2>
+      <p>Our website may contain links to external resources for additional information.</p>
+      <p>Sahi Helpline is not responsible for the privacy practices or content of external websites.</p>
+    </section>
+
+    <section class="privacy-section">
+      <h2>10. Updates to This Policy</h2>
+      <p>This Privacy Policy may be updated from time to time to reflect changes in our practices or legal requirements.</p>
+      <p>Any updates will be posted on this page with a revised "Last updated" date.</p>
+    </section>
+
+    <section class="privacy-section">
+      <h2>11. Contact Us</h2>
+      <p>If you have questions or concerns about this Privacy Policy or our privacy practices, you may contact us at:</p>
+      <p><strong>Email:</strong> info@merikhushi.org</p>
+      <p><strong>Helpline:</strong> +91 96217 95550</p>
+      <p><strong>Availability:</strong> 7:00 AM to 7:00 PM | Every day</p>
+    </section>
+
+    <div class="privacy-final">
+      <p>Sahi Helpline exists to provide trusted information and support in a way that respects your privacy, dignity, and choice at every step.</p>
+    </div>
+  </div>
+</main>
+
+<footer class="footer-section">
+  <div class="footer-inner">
+    <div class="footer-row logo-row">
+      <div class="footer-logo">
+        <img src="images/kushilogo.png" alt="Sahi Helpline Logo" />
+      </div>
+      <p class="footer-subline">Confidential Support · Medically Correct</p>
+    </div>
+
+    <div class="footer-row">
+      <p class="footer-copy">
+        Sahi Helpline offers confidential, judgement-free support for periods, pregnancy, and safe abortion. Our trained counsellors are here to listen and guide you with accurate information.
+      </p>
+    </div>
+
+    <div class="footer-bottom">
+      <span>&copy; 2026 Sahi Helpline. All rights reserved.</span>
+      <div>
+        <a href="privacy.html" class="footer-link">Privacy Policy</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -289,7 +289,7 @@ body {
   text-transform: uppercase;
   /* box-shadow: 0 10px 18px rgba(0, 0, 0, 0.35); */
   z-index: 20;
-  pointer-events: none;
+  cursor: pointer;
 }
 
 .story-left {
@@ -531,7 +531,7 @@ body {
 .stack-card {
   position: absolute;
   width: min(920px, 94%);
-  background: rgba(255, 255, 255, 0.9);
+  background: rgb(255, 255, 255);
   color: var(--ink);
   border: 2px solid var(--ink);
   border-radius: 20px;
@@ -578,6 +578,7 @@ body {
   left: 50%;
   bottom: 10%;
   transform: translateX(-75%);
+  z-index: 1;
   width: min(980px, 96%);
   display: flex;
   align-items: flex-end;
@@ -591,7 +592,7 @@ body {
   height: auto;
   transform: translate(-10px, 120%) rotate(26deg) scaleX(-1);
   position: relative;
-  z-index: 3;
+  z-index: 15;
   margin-bottom: -120px;
 }
 
@@ -602,11 +603,14 @@ body {
 
 .stack-hand .Cards_Hand__1QrT_:nth-child(1) {
   position: relative;
+  z-index: 5;
 }
 
 .stack-hand .Cards_Hand__1QrT_:nth-child(2) {
   position: absolute;
   inset: 0;
+  pointer-events: none;
+  z-index: 15;
 }
 
 .stack-hand svg {
@@ -627,7 +631,7 @@ body {
   position: relative;
   transform: rotate(4deg);
   min-height: 220px;
-  z-index: 2;
+  z-index: 10;
 }
 
 /* ---------------- FAQ SECTION ---------------- */
@@ -731,6 +735,7 @@ body {
 }
 
 .faq-answer {
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   color: rgba(0, 0, 0, 0.75);
   font-size: clamp(15px, 2.1vw, 19px);
   line-height: 1.6;
@@ -1081,7 +1086,7 @@ body {
 <!-- FIXED HEADER -->
 <header class="header">
   <nav>
-    <a href="#hero">Helpline</a>
+    <a href="#parallax">Helpline</a>
 
     <a href="#faq">FAQ</a>
     <a href="tel:+919621795550">Speak to Counsellor</a>
@@ -1108,7 +1113,7 @@ body {
 
   <section class="story-section" id="story">
     <div class="story-pin">
-      <a class="scroll-badge" href="#parallax">Scroll down</a>
+      <a class="scroll-badge" href="#story">Scroll down</a>
       <div class="story-left">
         <span class="story-kicker">We are here to help</span>
         <!-- <p class="story-copy" id="story-copy">
@@ -1121,8 +1126,7 @@ body {
 
         <div class="story-card" id="story-card">
           <ul>
-            <li> Speak to a Counsellor Anonymously
-</li>
+            <li><a href="tel:+919621795550">Speak to a Counsellor Anonymously</a></li>
             
           </ul>
         </div>
@@ -1133,9 +1137,9 @@ body {
           <img src="images/Khushi Helpline Section 2 Image.png" alt="Woman's hand" loading="lazy" decoding="async" />
         </div>
 
-        <div class="bubble deep" id="bubble-deep">“Periods?”</div>
-        <div class="bubble assured" id="bubble-assured">“Pregnancy?”</div>
-        <div class="bubble masc" id="bubble-masc">“Abortion?”</div>
+        <div class="bubble deep" id="bubble-deep">Periods?</div>
+        <div class="bubble assured" id="bubble-assured">Pregnancy?</div>
+        <div class="bubble masc" id="bubble-masc">Abortion?</div>
 
       </div>
     </div>
@@ -1306,7 +1310,9 @@ body {
       <div class="contact-header">
         <span class="contact-kicker">Connect With Us</span>
         <h2 class="contact-title">We are Here to Help You</h2>
-        <p class="contact-subtitle">Schedule a Call</p>
+        <p class="contact-subtitle">Schedule a Call (or)</p>
+                <!-- <p class="contact-subtitle" style="text-align: left;">or</p> -->
+
         <div class="contact-cta">Speak to a Counsellor</div>
       </div>
 
@@ -1351,7 +1357,7 @@ body {
       </div>
 
       <div class="footer-row footer-bottom">
-        <span>©2026 Sahi Helpline | Privacy Policy</span>
+        <span>©2026 Sahi Helpline | <a class="footer-link" href="privacy.html">Privacy Policy</a></span>
         <span>Website Design and Development by Global Honey Bee — <a class="footer-link" href="https://ghb.digital" target="_blank" rel="noopener">ghb.digital</a></span>
       </div>
     </div>
@@ -1581,6 +1587,66 @@ gsap.fromTo(".contact-card", {
     end: "top 35%",
     scrub: true
   }
+});
+
+/* SMOOTH FAQ ACCORDION */
+document.addEventListener('DOMContentLoaded', () => {
+  const faqItems = document.querySelectorAll('.faq-item');
+  
+  faqItems.forEach(item => {
+    const question = item.querySelector('.faq-question');
+    const answer = item.querySelector('.faq-answer');
+    
+    question.addEventListener('click', (e) => {
+      e.preventDefault();
+      
+      const isOpen = item.hasAttribute('open');
+      
+      // Close all other items smoothly
+      faqItems.forEach(otherItem => {
+        if (otherItem !== item && otherItem.hasAttribute('open')) {
+          const otherAnswer = otherItem.querySelector('.faq-answer');
+          gsap.to(otherAnswer, {
+            height: 0,
+            opacity: 0,
+            duration: 0.3,
+            ease: 'power2.inOut',
+            onComplete: () => {
+              otherItem.removeAttribute('open');
+            }
+          });
+        }
+      });
+      
+      if (!isOpen) {
+        // Open this item
+        item.setAttribute('open', '');
+        
+        // Measure the natural height
+        answer.style.height = 'auto';
+        const targetHeight = answer.scrollHeight;
+        answer.style.height = '0px';
+        
+        gsap.to(answer, {
+          height: targetHeight,
+          opacity: 1,
+          duration: 0.5,
+          ease: 'power2.out'
+        });
+      } else {
+        // Close this item
+        gsap.to(answer, {
+          height: 0,
+          opacity: 0,
+          duration: 0.3,
+          ease: 'power2.inOut',
+          onComplete: () => {
+            item.removeAttribute('open');
+          }
+        });
+      }
+    });
+  });
 });
 
 </script>

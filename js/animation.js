@@ -51,3 +51,23 @@ mm.add({
     duration: 0.2
   }, "+=0.2");
 });
+
+/* SMOOTH SCROLL FOR SCROLL BADGE */
+document.addEventListener('DOMContentLoaded', () => {
+  const scrollBadge = document.querySelector('.scroll-badge');
+  
+  if (scrollBadge) {
+    scrollBadge.addEventListener('click', (e) => {
+      e.preventDefault();
+      const targetId = scrollBadge.getAttribute('href');
+      const targetSection = document.querySelector(targetId);
+      
+      if (targetSection) {
+        targetSection.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
+        });
+      }
+    });
+  }
+});
