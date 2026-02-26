@@ -360,6 +360,16 @@ body {
   text-align: center;
 }
 
+@keyframes bubbleFloat {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
 .bubble.deep {
   background: var(--pink-1);
   top: 24%;
@@ -440,6 +450,19 @@ body {
 .story-section.static-text .bubble {
   transform: none;
   opacity: 1;
+  animation: bubbleFloat 3.8s ease-in-out infinite;
+}
+
+.story-section.static-text .bubble.deep {
+  animation-delay: 0s;
+}
+
+.story-section.static-text .bubble.assured {
+  animation-delay: 0.4s;
+}
+
+.story-section.static-text .bubble.masc {
+  animation-delay: 0.8s;
 }
 
 /* ---------------- VIDEO SECTION ---------------- */
@@ -1297,7 +1320,7 @@ body {
           loop
           playsinline
           controls
-          src="images/Sahi Helpline Promo Video.mp4"
+          src="images/SRH Helpline Promo Video.mp4"
         ></video>
       </div>
     </div>
