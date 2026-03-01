@@ -166,6 +166,33 @@ html[lang="hi"] .footer-bottom {
   font-size: 14px;
 }
 
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+
+.menu-toggle {
+  display: none;
+  width: 40px;
+  height: 40px;
+  border: 1px solid rgba(43, 28, 77, 0.2);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.8);
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 4px;
+  cursor: pointer;
+}
+
+.menu-toggle span {
+  width: 16px;
+  height: 2px;
+  background: var(--ink);
+  border-radius: 10px;
+}
+
 .header nav a {
   color: #000000;
   text-decoration: none;
@@ -546,6 +573,48 @@ html[lang="hi"] .footer-bottom {
   overflow: hidden;
   z-index: 1;
 }
+
+.video-back-rows {
+  position: absolute;
+  inset: 0;
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 48px;
+  padding: 150px 6vw 0;
+  overflow: hidden;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.video-back-row {
+    display: flex;
+  width: 180%;
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 24px;
+  align-items: center;
+  transform: rotate(0deg);
+  opacity: 0.7;
+}
+
+.video-back-card {
+  background: rgba(255,255,255,0.92);
+  color: var(--ink);
+  border: 2px solid;
+  border-radius: 14px;
+  padding: 14px 24px;
+  font-family: IBM Plex Mono, monospace;
+  font-size: clamp(13px, 1.4vw, 16px);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  box-shadow: 0 10px 22px rgba(59,42,99,0.18);
+  white-space: nowrap;
+}
+
+.pink-back { border-color: var(--pink-1); box-shadow: 0 10px 22px rgba(255,214,255,0.3); }
+.lav-back { border-color: var(--lav-1); box-shadow: 0 10px 22px rgba(200,182,255,0.3); }
+.lav-back-2 { border-color: var(--lav-3); box-shadow: 0 10px 22px rgba(187,207,255,0.3); }
 
 .parallax-badge {
   position: absolute;
@@ -1169,12 +1238,449 @@ html[lang="hi"] .footer-bottom {
   outline-offset: 4px;
 }
 
+@media (max-width: 1200px) {
+  .header nav {
+    gap: 16px;
+    padding: 12px 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .story-section {
+    height: auto;
+    margin-top: 0;
+  }
+
+  .parallax-section {
+    height: auto;
+    min-height: 100vh;
+    margin-top: 0;
+    padding: 56px 0 72px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .parallax-lines {
+    position: relative;
+    padding: 64px 0 20px;
+    gap: 24px;
+  }
+
+  .video-back-rows {
+    padding: 64px 4vw 0;
+    gap: 20px;
+  }
+
+  .parallax-row {
+    width: 100%;
+    transform: none;
+    flex-wrap: nowrap;
+    overflow: hidden;
+  }
+
+  .parallax-video-wrap {
+    position: relative;
+    top: auto;
+    margin-top: 20px;
+  }
+}
+
+@media (max-width: 900px) {
+  .header nav {
+    width: min(96%, 640px);
+    gap: 8px;
+    padding: 10px 12px;
+    font-size: 12px;
+    border-radius: 0 0 12px 12px;
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .menu-toggle {
+    display: inline-flex;
+    align-self: flex-end;
+  }
+
+  .nav-links {
+    width: 100%;
+    display: grid;
+    gap: 10px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+  }
+
+  .header nav.open .nav-links {
+    max-height: 420px;
+  }
+
+  .header nav a {
+    font-size: 12px;
+    white-space: normal;
+    text-align: center;
+  }
+
+  .lang-switch {
+    margin: 2px auto 0;
+  }
+
+  .page {
+    padding-top: 72px;
+  }
+
+  .story-pin,
+  .story-section.static-text .story-pin {
+    position: relative;
+    top: auto;
+    min-height: auto;
+    grid-template-columns: 1fr;
+    text-align: left;
+    padding: 28px 18px 56px;
+    gap: 20px;
+  }
+
+  .story-left,
+  .story-section.static-text .story-left {
+    transform: none;
+    max-width: 100%;
+  }
+
+  .story-copy,
+  .story-section.static-text .story-copy {
+    max-width: 100%;
+    font-size: clamp(20px, 6.2vw, 32px);
+  }
+
+  .story-right,
+  .story-section.static-text .story-right {
+    min-height: 68vh;
+    transform: none;
+    display: block;
+  }
+
+  .hand-wrap,
+  .story-section.static-text .hand-wrap {
+    transform: none;
+    opacity: 1;
+    width: min(420px, 75%);
+    margin: 0;
+  }
+
+  .bubble,
+  .story-section.static-text .bubble {
+    position: absolute;
+    width: 152px;
+    height: 152px;
+    border-radius: 50%;
+    padding: 12px;
+    font-size: 14px;
+    animation: bubbleFloat 3.8s ease-in-out infinite;
+    opacity: 1;
+  }
+
+  .bubble.deep,
+  .story-section.static-text .bubble.deep {
+    top: 6%;
+    left: -4%;
+  }
+
+  .bubble.assured,
+  .story-section.static-text .bubble.assured {
+    bottom: 16%;
+    left: 4%;
+  }
+
+  .bubble.masc,
+  .story-section.static-text .bubble.masc {
+    top: 38%;
+    right: -5%;
+  }
+
+  .parallax-badge {
+    position: relative;
+    top: auto;
+    left: auto;
+    transform: none;
+    margin: -62px auto 0;
+    order: 1;
+  }
+
+  .parallax-video-title {
+    order: 2;
+    margin: 10px 0 6px;
+    z-index: 6;
+  }
+
+  .parallax-video-wrap {
+    order: 3;
+    margin-top: 100px;
+    margin-bottom: 18px;
+    width: 100%;
+    z-index: 5;
+  }
+
+  .parallax-lines {
+    position: relative;
+    width: 100%;
+    padding: 12px 0 0;
+    gap: 12px;
+    z-index: 3;
+    pointer-events: none;
+    order: 4;
+    justify-content: flex-start;
+    overflow: hidden;
+    margin-top: -160px;
+  }
+
+  .video-back-rows {
+    display: flex;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 62%;
+    transform: translateY(-55%);
+    padding: 0 4vw;
+    gap: 50px;
+    margin-top: 50px;
+    justify-content: center;
+    z-index: 4;
+    pointer-events: none;
+  }
+
+  .video-back-row {
+    width: 185%;
+    gap: 10px;
+    transform: rotate(0deg);
+    transform-origin: center;
+    opacity: 0.82;
+  }
+
+  .video-back-row:nth-child(even) {
+    transform: rotate(0deg);
+  }
+
+  .video-back-row:nth-child(1) {
+    margin-left: -8%;
+    margin-top: -44px;
+  }
+
+  .video-back-row:nth-child(2) {
+    margin-left: 4%;
+    margin-bottom: 0;
+  }
+
+  .video-back-row:nth-child(3) {
+    margin-left: -6%;
+    margin-bottom: 0;
+    transform: rotate(0deg);
+    margin-top: 70px;
+  }
+
+  .video-back-card {
+    font-size: 12px;
+    padding: 9px 12px;
+  }
+
+  .parallax-card {
+    font-size: 13px;
+    padding: 9px 12px;
+    background: rgba(255, 255, 255, 0.95);
+    border-color: rgba(43, 28, 77, 0.28);
+    box-shadow: 0 10px 20px rgba(59, 42, 99, 0.24);
+  }
+
+  .parallax-row {
+    width: 170%;
+    justify-content: flex-start;
+    gap: 10px;
+    flex-wrap: nowrap;
+    overflow: hidden;
+    opacity: 0.8;
+    will-change: transform;
+    transform: none;
+  }
+
+  .parallax-video {
+    width: min(95vw, 640px);
+    border-radius: 16px;
+  }
+
+  .stack-section {
+    height: 300vh;
+    padding: 0;
+  }
+
+  .stack-pin {
+    position: sticky;
+    top: 0;
+    min-height: 100vh;
+    display: grid;
+    place-items: center;
+    gap: 0;
+    padding: 0;
+    overflow: hidden;
+  }
+
+  .stack-card {
+    position: absolute;
+    opacity: 0;
+    width: min(94vw, 680px);
+    max-width: 700px;
+    font-size: clamp(20px, 5.6vw, 30px);
+    padding: clamp(22px, 4.6vw, 36px);
+    margin: 0;
+    transform: translateY(220px) rotate(2deg);
+  }
+
+  #stack-card-0 {
+    z-index: 1;
+    margin-top: 0;
+  }
+
+  #stack-card-1 {
+    z-index: 2;
+    margin-top: 0;
+  }
+
+  #stack-card-2 {
+    z-index: 3;
+    margin-top: 0;
+  }
+
+  .stack-hand-wrap {
+    position: absolute;
+    left: 50%;
+    bottom: 37%;
+    transform: translateX(-50%);
+    opacity: 0;
+    width: min(94vw, 680px);
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    gap: 0;
+    z-index: 20;
+  }
+
+  .stack-hand {
+    display: none;
+    width: 0;
+    margin-bottom: 0;
+    transform: none;
+  }
+
+  .stack-hand-wrap .stack-card {
+    width: fit-content;
+    max-width: min(88vw, 560px);
+    min-height: auto;
+    margin: 0;
+    padding: clamp(14px, 2.8vw, 22px);
+    z-index: 30;
+    line-height: 1.3;
+    transform: rotate(4deg);
+  }
+
+  #stack-card-3 {
+    z-index: 30;
+  }
+
+  .contact-inner {
+    grid-template-columns: 1fr;
+  }
+
+  .faq-question {
+    align-items: flex-start;
+  }
+
+  .footer-bottom {
+    font-size: 11px;
+    gap: 10px;
+  }
+
+  .dove {
+    display: none;
+  }
+}
+
 @media (max-width: 600px) {
+  .header nav {
+    width: 98%;
+    padding: 9px 10px;
+    gap: 8px;
+  }
+
+  .header nav.open .nav-links {
+    max-height: 500px;
+  }
+
+  .header nav a {
+    font-size: 11px;
+  }
+
+  .lang-btn {
+    font-size: 10px;
+    padding: 5px 8px;
+  }
+
+  .story-card {
+    width: min(90vw, 320px);
+    font-size: 14px;
+    padding: 12px 14px;
+  }
+
+  .bubble,
+  .story-section.static-text .bubble {
+    width: 128px;
+    height: 128px;
+    font-size: 12.5px;
+    padding: 10px;
+  }
+
+  .bubble.deep,
+  .story-section.static-text .bubble.deep {
+    top: 8%;
+    left: -6%;
+  }
+
+  .bubble.assured,
+  .story-section.static-text .bubble.assured {
+    bottom: 18%;
+    left: 2%;
+  }
+
+  .bubble.masc,
+  .story-section.static-text .bubble.masc {
+    top: 44%;
+    right: -7%;
+  }
+
+  .parallax-lines {
+    padding-top: 0;
+    margin-top: -150px;
+  }
+
+  .video-back-rows {
+    padding-top: 44px;
+    margin-top: -190px;
+  }
+
+  .parallax-row {
+    width: 200%;
+  }
+
+  .faq-section,
+  .contact-section,
+  .footer-section {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
   .whatsapp-fab {
     width: 52px;
     height: 52px;
-    right: 18px;
-    bottom: 18px;
+    right: 16px;
+    bottom: 16px;
   }
 
   .whatsapp-fab svg {
@@ -1182,45 +1688,41 @@ html[lang="hi"] .footer-bottom {
     height: 26px;
   }
 
-  .parallax-video-wrap {
-    top: 13vh;
+  .footer-bottom {
+    font-size: 10px;
+    line-height: 1.6;
   }
 }
 
-@media (max-width: 900px) {
-  .story-pin {
-    grid-template-columns: 1fr;
-    text-align: left;
+@media (max-width: 480px) {
+  .parallax-video {
+    width: min(95vw, 380px) !important;
+    border-radius: 12px;
   }
 
-  .story-right {
-    min-height: 45vh;
+  .parallax-video-wrap {
+    margin: 52px 0 12px;
   }
 
-  .story-section.static-text .story-right {
-    transform: translateY(10px);
+  .stack-card {
+    font-size: clamp(18px, 4.8vw, 24px) !important;
+    padding: clamp(18px, 3.6vw, 28px) !important;
+    max-width: 96vw;
   }
 
-  .story-section.static-text .hand-wrap {
-    margin-top: 10px;
+  #stack-card-3 {
+    max-width: min(90vw, 500px) !important;
+    min-height: auto !important;
+    padding: 14px 18px !important;
   }
 
-  .dove {
-    top: 70px;
+  .stack-hand-wrap {
+    bottom: 39%;
   }
 
-  .scroll-badge {
-    top: -30px;
-  }
-
-  .bubble.masc {
-    top: 5%;
-    right: -7%;
-  }
-
-  .stack-hand-wrap .stack-card {
-    width: 85%;
-    transform: rotate(4deg) translateY(-40px);
+  .stack-pin {
+    padding: 0 8px !important;
+    gap: 0 !important;
   }
 }
 </style>
@@ -1239,14 +1741,20 @@ html[lang="hi"] .footer-bottom {
 <!-- FIXED HEADER -->
 <header class="header">
   <nav>
-    <a href="#parallax" data-i18n="navHelpline">Helpline</a>
-
-    <a href="#faq" data-i18n="navInfo">Sahi Information</a>
-    <a href="tel:+919621795550" data-i18n="navSpeak">Speak to Counsellor</a>
-    <a href="#contact" data-i18n="navSchedule">Schedule Call</a>
-    <div class="lang-switch" role="group" aria-label="Language selector">
-      <button type="button" class="lang-btn" data-lang="en">EN</button>
-      <button type="button" class="lang-btn" data-lang="hi">हिंदी</button>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="main-menu" aria-label="Open menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    <div class="nav-links" id="main-menu">
+      <a href="#parallax" data-i18n="navHelpline">Helpline</a>
+      <a href="#faq" data-i18n="navInfo">Sahi Information</a>
+      <a href="tel:+919621795550" data-i18n="navSpeak">Speak to Counsellor</a>
+      <a href="#contact" data-i18n="navSchedule">Schedule Call</a>
+      <div class="lang-switch" role="group" aria-label="Language selector">
+        <button type="button" class="lang-btn" data-lang="en">EN</button>
+        <button type="button" class="lang-btn" data-lang="hi">हिंदी</button>
+      </div>
     </div>
   </nav>
 </header>
@@ -1364,6 +1872,33 @@ html[lang="hi"] .footer-bottom {
     </div>
 
     <p class="parallax-video-title" data-i18n="parallaxTitle">Sahi Jaankari. Sahi Support.</p>
+
+    <div class="video-back-rows" aria-hidden="true">
+      <div class="video-back-row" data-speed="0.8">
+        <span class="video-back-card pink-back">Safe Space</span>
+        <span class="video-back-card lav-back">No Judgement</span>
+        <span class="video-back-card lav-back-2">Complete Privacy</span>
+        <span class="video-back-card pink-back">Safe Space</span>
+        <span class="video-back-card lav-back">No Judgement</span>
+        <span class="video-back-card lav-back-2">Complete Privacy</span>
+      </div>
+      <div class="video-back-row" data-speed="-0.6">
+        <span class="video-back-card lav-back">Correct Information</span>
+        <span class="video-back-card lav-back-2">Trained Counsellors</span>
+        <span class="video-back-card pink-back">Support At Your Pace</span>
+        <span class="video-back-card lav-back">Correct Information</span>
+        <span class="video-back-card lav-back-2">Trained Counsellors</span>
+        <span class="video-back-card pink-back">Support At Your Pace</span>
+      </div>
+      <div class="video-back-row" data-speed="1.0">
+        <span class="video-back-card lav-back-2">Your Choice Matters</span>
+        <span class="video-back-card pink-back">Complete Confidentiality</span>
+        <span class="video-back-card lav-back">Safe Abortion Support</span>
+        <span class="video-back-card lav-back-2">Your Choice Matters</span>
+        <span class="video-back-card pink-back">Complete Confidentiality</span>
+        <span class="video-back-card lav-back">Safe Abortion Support</span>
+      </div>
+    </div>
 
     <div class="parallax-video-wrap">
       <div class="parallax-video">
@@ -1509,57 +2044,127 @@ html[lang="hi"] .footer-bottom {
 gsap.registerPlugin(ScrollTrigger);
 
 /* ---------------- PARALLAX LINES ---------------- */
-const parallaxRows = gsap.utils.toArray(".parallax-row");
+const parallaxRows = gsap.utils.toArray('.parallax-row, .video-back-row');
 
-parallaxRows.forEach((row) => {
-  const speed = parseFloat(row.dataset.speed || "1");
-  const original = row.innerHTML;
-  row.innerHTML = `${original} ${original}`;
+const parallaxMM = gsap.matchMedia();
 
-  requestAnimationFrame(() => {
-    const rowWidth = row.scrollWidth / 2;
-    const wrapX = gsap.utils.wrap(-rowWidth, 0);
-    gsap.set(row, { x: 0 });
-    gsap.to(row, {
-      x: speed * rowWidth,
-      ease: "none",
-      scrollTrigger: {
-        trigger: "#parallax",
-        start: "top bottom",
-        end: "bottom top",
-        scrub: true
-      },
-      modifiers: {
-        x: (x) => `${wrapX(parseFloat(x))}px`
-      }
+parallaxMM.add("(min-width: 901px)", () => {
+  parallaxRows.forEach((row) => {
+    const speed = parseFloat(row.dataset.speed || "1");
+    if (!row.dataset.loopReady) {
+      const original = row.innerHTML;
+      row.innerHTML = `${original} ${original}`;
+      row.dataset.loopReady = "1";
+    }
+
+    requestAnimationFrame(() => {
+      const rowWidth = row.scrollWidth / 2;
+      const wrapX = gsap.utils.wrap(-rowWidth, 0);
+      gsap.set(row, { x: 0 });
+      gsap.to(row, {
+        x: speed * rowWidth,
+        ease: "none",
+        scrollTrigger: {
+          trigger: "#parallax",
+          start: "top bottom",
+          end: "bottom top",
+          scrub: true
+        },
+        modifiers: {
+          x: (x) => `${wrapX(parseFloat(x))}px`
+        }
+      });
     });
   });
 });
 
-const stackTl = gsap.timeline({
-  scrollTrigger: {
-    trigger: "#stack",
-    start: "top top",
-    end: "+=200%",
-    scrub: true,
-    pin: ".stack-pin"
-  }
+parallaxMM.add("(max-width: 900px)", () => {
+  parallaxRows.forEach((row) => {
+    const speed = parseFloat(row.dataset.speed || "1");
+    if (!row.dataset.loopReady) {
+      const original = row.innerHTML;
+      row.innerHTML = `${original} ${original}`;
+      row.dataset.loopReady = "1";
+    }
+
+    requestAnimationFrame(() => {
+      const rowWidth = row.scrollWidth / 2;
+      if (!rowWidth || rowWidth < 20) return;
+      const wrapX = gsap.utils.wrap(-rowWidth, 0);
+      gsap.killTweensOf(row);
+      gsap.set(row, { x: 0 });
+      gsap.to(row, {
+        x: speed * rowWidth,
+        ease: "none",
+        scrollTrigger: {
+          trigger: "#parallax",
+          start: "top bottom",
+          end: "bottom top",
+          scrub: true
+        },
+        modifiers: {
+          x: (x) => `${wrapX(parseFloat(x))}px`
+        }
+      });
+    });
+  });
 });
 
-gsap.set("#stack-hand-wrap", { y: 140 });
-gsap.set("#stack-card-3", { opacity: 0 });
-gsap.set(".stack-hand", { y: 40 });
+const stackMM = gsap.matchMedia();
 
-stackTl
-  .to("#stack-card-0", { opacity: 1, y: 0, rotate: -8, duration: 0.7, ease: "power3.out" })
-  .to("#stack-card-0", { rotate: -6, duration: 0.3, ease: "power2.out" })
-  .to("#stack-card-1", { opacity: 1, y: 0, rotate: 2, duration: 0.7, ease: "power3.out" })
-  .to("#stack-card-1", { rotate: 3, duration: 0.3, ease: "power2.out" })
-  .to("#stack-card-2", { opacity: 1, y: -30, rotate: -2, duration: 0.7, ease: "power3.out" }, "+=0.3")
-  .to("#stack-card-2", { rotate: -3, duration: 0.3, ease: "power2.out" })
-  .to("#stack-hand-wrap", { opacity: 1, y: 0, duration: 0.8, ease: "power3.out" }, "+=0.3")
-  .to("#stack-card-3", { opacity: 1, rotate: 6, duration: 0.4, ease: "power2.out" }, "<")
-  .to(".stack-hand", { y: 0, duration: 0.3, ease: "power2.out" }, "<");
+stackMM.add("(min-width: 901px)", () => {
+  const stackTl = gsap.timeline({
+    scrollTrigger: {
+      trigger: "#stack",
+      start: "top top",
+      end: "+=200%",
+      scrub: true,
+      pin: ".stack-pin"
+    }
+  });
+
+  gsap.set("#stack-hand-wrap", { y: 140 });
+  gsap.set("#stack-card-3", { opacity: 0 });
+  gsap.set(".stack-hand", { y: 40 });
+
+  stackTl
+    .to("#stack-card-0", { opacity: 1, y: 0, rotate: -8, duration: 0.7, ease: "power3.out" })
+    .to("#stack-card-0", { rotate: -6, duration: 0.3, ease: "power2.out" })
+    .to("#stack-card-1", { opacity: 1, y: 0, rotate: 2, duration: 0.7, ease: "power3.out" })
+    .to("#stack-card-1", { rotate: 3, duration: 0.3, ease: "power2.out" })
+    .to("#stack-card-2", { opacity: 1, y: -30, rotate: -2, duration: 0.7, ease: "power3.out" }, "+=0.3")
+    .to("#stack-card-2", { rotate: -3, duration: 0.3, ease: "power2.out" })
+    .to("#stack-hand-wrap", { opacity: 1, y: 0, duration: 0.8, ease: "power3.out" }, "+=0.3")
+    .to("#stack-card-3", { opacity: 1, rotate: 6, duration: 0.4, ease: "power2.out" }, "<")
+    .to(".stack-hand", { y: 0, duration: 0.3, ease: "power2.out" }, "<");
+});
+
+stackMM.add("(max-width: 900px)", () => {
+  const stackTl = gsap.timeline({
+    scrollTrigger: {
+      trigger: "#stack",
+      start: "top top",
+      end: "+=200%",
+      scrub: true,
+      pin: ".stack-pin"
+    }
+  });
+
+  gsap.set("#stack-hand-wrap", { y: 140 });
+  gsap.set("#stack-card-3", { opacity: 0 });
+  gsap.set(".stack-hand", { y: 40 });
+
+  stackTl
+    .to("#stack-card-0", { opacity: 1, y: 0, rotate: -8, duration: 0.7, ease: "power3.out" })
+    .to("#stack-card-0", { rotate: -6, duration: 0.3, ease: "power2.out" })
+    .to("#stack-card-1", { opacity: 1, y: 0, rotate: 2, duration: 0.7, ease: "power3.out" })
+    .to("#stack-card-1", { rotate: 3, duration: 0.3, ease: "power2.out" })
+    .to("#stack-card-2", { opacity: 1, y: -30, rotate: -2, duration: 0.7, ease: "power3.out" }, "+=0.3")
+    .to("#stack-card-2", { rotate: -3, duration: 0.3, ease: "power2.out" })
+    .to("#stack-hand-wrap", { opacity: 1, y: 0, duration: 0.8, ease: "power3.out" }, "+=0.3")
+    .to("#stack-card-3", { opacity: 1, rotate: 6, duration: 0.4, ease: "power2.out" }, "<")
+    .to(".stack-hand", { y: 0, duration: 0.3, ease: "power2.out" }, "<");
+});
 
 gsap.fromTo(".faq-header", {
   opacity: 0,
@@ -1629,6 +2234,27 @@ gsap.fromTo(".contact-card", {
 /* SMOOTH FAQ ACCORDION */
 document.addEventListener('DOMContentLoaded', () => {
   const faqItems = document.querySelectorAll('.faq-item');
+  const nav = document.querySelector('.header nav');
+  const menuToggle = document.querySelector('.menu-toggle');
+  const menuLinks = document.querySelectorAll('.nav-links a');
+
+  if (menuToggle && nav) {
+    menuToggle.addEventListener('click', () => {
+      const isOpen = nav.classList.toggle('open');
+      menuToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      menuToggle.setAttribute('aria-label', isOpen ? 'Close menu' : 'Open menu');
+    });
+
+    menuLinks.forEach((link) => {
+      link.addEventListener('click', () => {
+        if (window.matchMedia('(max-width: 900px)').matches) {
+          nav.classList.remove('open');
+          menuToggle.setAttribute('aria-expanded', 'false');
+          menuToggle.setAttribute('aria-label', 'Open menu');
+        }
+      });
+    });
+  }
   
   faqItems.forEach(item => {
     const question = item.querySelector('.faq-question');
