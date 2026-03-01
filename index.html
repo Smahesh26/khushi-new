@@ -2483,6 +2483,8 @@ document.addEventListener('DOMContentLoaded', () => {
       contactSend: "Send",
       contactDisclaimer1: "By submitting this form, you consent to being contacted by a Sahi Helpline counsellor. Your information will be kept strictly confidential.",
       contactDisclaimer2: "Sahi helpline timings: 7am-7pm.",
+      formSuccess: "Form submitted successfully.",
+      formError: "Form submission failed. Please try again.",
       footerCopy1: "Sahi helpline connects you to trained experts for periods, pregnancy, and safe abortion — privately. The helpline connects callers to trained counsellors who listen carefully, share medically accurate information, and help individuals understand their options based on their unique situations. There is no pressure, no obligation, and no one-size-fits-all advice.",
       footerCopy2: "Conversations are kept completely confidential, and no personal information is collected or stored through the website. Sahi helpline exists to ensure that when decisions are personal and sensitive, the information and support available are trustworthy, calm, and human.",
       footerCopyright: "©2026 Sahi helpline",
@@ -2533,6 +2535,8 @@ document.addEventListener('DOMContentLoaded', () => {
       contactSend: "सबमिट करें",
       contactDisclaimer1: "यह फॉर्म जमा करके, आप साही हेल्पलाइन के काउंसलर द्वारा संपर्क किए जाने के लिए सहमति देते हैं। आपकी जानकारी पूरी तरह गोपनीय रखी जाएगी।",
       contactDisclaimer2: "साही हेल्पलाइन का समय: सुबह 7 बजे से शाम 7 बजे तक।",
+      formSuccess: "फॉर्म सफलतापूर्वक सबमिट हो गया है।",
+      formError: "फॉर्म सबमिट नहीं हुआ। कृपया फिर से कोशिश करें।",
       footerCopy1: "सही हेल्पलाइन आपको पीरियड्स, गर्भावस्था और सुरक्षित गर्भपात के लिए प्रशिक्षित विशेषज्ञों से निजी तौर पर जोड़ती है। हेल्पलाइन कॉल करने वालों को प्रशिक्षित काउंसलर से जोड़ती है जो ध्यान से सुनते हैं, चिकित्सकीय रूप से सटीक जानकारी साझा करते हैं और सभी को उनकी विशिष्ट परिस्थितियों के आधार पर उनके विकल्पों को समझने में मदद करते हैं। कोई दबाव नहीं, कोई बाध्यता नहीं और कोई भी सलाह सभी के लिए एक जैसी नहीं होती।",
       footerCopy2: "बातचीत पूरी तरह गोपनीय रखी जाती है, और वेबसाइट के माध्यम से कोई भी व्यक्तिगत जानकारी एकत्र या संग्रहीत नहीं की जाती है। सही हेल्पलाइन यह सुनिश्चित करने के लिए मौजूद है कि जब निर्णय व्यक्तिगत और संवेदनशील हों, तो उपलब्ध जानकारी और सहायता विश्वसनीय, शांत और मानवीय हो।",
       footerCopyright: "©2026 Sahi helpline",
@@ -2601,6 +2605,53 @@ document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll(".lang-btn").forEach((btn) => {
     btn.addEventListener("click", () => setLanguage(btn.dataset.lang));
   });
+
+  const contactForm = document.querySelector(".contact-form");
+  if (contactForm) {
+    contactForm.addEventListener("submit", async (event) => {
+      event.preventDefault();
+
+      const submitButton = contactForm.querySelector(".contact-submit");
+      const currentLang = translations[document.documentElement.lang] ? document.documentElement.lang : "en";
+      const formData = new FormData(contactForm);
+      const action = contactForm.getAttribute("action") || "";
+      const ajaxAction = action.includes("formsubmit.co/ajax/")
+        ? action
+        : action.replace("formsubmit.co/", "formsubmit.co/ajax/");
+
+      if (!ajaxAction) {
+        alert(translations[currentLang].formError);
+        return;
+      }
+
+      if (submitButton) {
+        submitButton.disabled = true;
+      }
+
+      try {
+        const response = await fetch(ajaxAction, {
+          method: "POST",
+          body: formData,
+          headers: {
+            Accept: "application/json"
+          }
+        });
+
+        if (!response.ok) {
+          throw new Error("Form submit failed");
+        }
+
+        alert(translations[currentLang].formSuccess);
+        contactForm.reset();
+      } catch (error) {
+        alert(translations[currentLang].formError);
+      } finally {
+        if (submitButton) {
+          submitButton.disabled = false;
+        }
+      }
+    });
+  }
 
   setLanguage(localStorage.getItem("sahi_lang") || "en");
 })();
