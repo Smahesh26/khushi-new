@@ -117,7 +117,15 @@ a { text-decoration: none; }
 }
 
 /* ---------------- BODY ---------------- */
+html {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
 body {
+  width: 100%;
+  max-width: 100%;
   background: var(--lav-1);
   font-family: var(--font-serif);
   overflow-x: hidden;
@@ -1314,6 +1322,7 @@ html[lang="hi"] .footer-bottom {
   .parallax-section {
     min-height: auto;
     padding-bottom: 20px;
+    overflow-x: hidden;
   }
 
   .header nav {
@@ -1542,7 +1551,8 @@ html[lang="hi"] .footer-bottom {
     height: 260px;
     margin-top: 0;
     z-index: 4;
-    overflow: visible;
+    overflow-x: hidden;
+    overflow-y: visible;
     pointer-events: none;
   }
 
