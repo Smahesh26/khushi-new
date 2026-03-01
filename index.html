@@ -198,6 +198,20 @@ html[lang="hi"] .footer-bottom {
   text-decoration: none;
 }
 
+.mobile-nav-top {
+  display: none;
+}
+
+.mobile-nav-logo {
+  display: none;
+}
+
+.mobile-nav-logo img {
+  width: 58px;
+  height: auto;
+  display: block;
+}
+
 .lang-switch {
   display: inline-flex;
   align-items: center;
@@ -1288,6 +1302,11 @@ html[lang="hi"] .footer-bottom {
 }
 
 @media (max-width: 900px) {
+  .parallax-section {
+    min-height: auto;
+    padding-bottom: 20px;
+  }
+
   .header nav {
     width: min(96%, 640px);
     gap: 8px;
@@ -1296,11 +1315,44 @@ html[lang="hi"] .footer-bottom {
     border-radius: 0 0 12px 12px;
     flex-direction: column;
     align-items: stretch;
+    background: var(--ink);
+    border-color: rgba(246, 236, 245, 0.2);
+    box-shadow: 0 18px 40px rgba(43, 28, 77, 0.38);
+  }
+
+  .mobile-nav-top {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    width: 100%;
+    min-height: 40px;
+  }
+
+  .mobile-nav-logo {
+    display: inline-flex;
+    justify-self: center;
+    align-items: center;
   }
 
   .menu-toggle {
     display: inline-flex;
-    align-self: flex-end;
+    align-self: center;
+    justify-self: end;
+    border-color: rgba(246, 236, 245, 0.35);
+    background: rgba(246, 236, 245, 0.08);
+  }
+
+  .menu-toggle span {
+    background: #f6ecf5;
+  }
+
+  .mobile-lang-switch {
+    margin: 0;
+    justify-self: start;
+  }
+
+  .desktop-lang-switch {
+    display: none;
   }
 
   .nav-links {
@@ -1320,9 +1372,22 @@ html[lang="hi"] .footer-bottom {
     font-size: 12px;
     white-space: normal;
     text-align: center;
+    color: #f6ecf5;
   }
 
   .lang-switch {
+    border-color: rgba(246, 236, 245, 0.4);
+  }
+
+  .lang-btn {
+    color: #f6ecf5;
+  }
+
+  .lang-btn.active {
+    background: rgba(246, 236, 245, 0.22);
+  }
+
+  .desktop-lang-switch {
     margin: 2px auto 0;
   }
 
@@ -1435,47 +1500,50 @@ html[lang="hi"] .footer-bottom {
   }
 
   .video-back-rows {
-    display: flex;
+    display: block;
     position: absolute;
     left: 0;
     right: 0;
-    top: 62%;
-    transform: translateY(-55%);
+    top: 90%;
+    transform: translateY(-50%);
     padding: 0 4vw;
-    gap: 50px;
-    margin-top: 50px;
-    justify-content: center;
+    height: 260px;
+    margin-top: 0;
     z-index: 4;
+    overflow: visible;
     pointer-events: none;
   }
 
   .video-back-row {
+    position: absolute;
+    left: 50%;
     width: 185%;
     gap: 10px;
-    transform: rotate(0deg);
+    margin: 0;
+    transform: translateX(-50%) rotate(0deg);
     transform-origin: center;
     opacity: 0.82;
+    z-index: 4;
   }
 
   .video-back-row:nth-child(even) {
-    transform: rotate(0deg);
+    transform: translateX(-50%) rotate(0deg);
   }
 
   .video-back-row:nth-child(1) {
     margin-left: -8%;
-    margin-top: -44px;
+    top: 90px;
   }
 
   .video-back-row:nth-child(2) {
     margin-left: 4%;
-    margin-bottom: 0;
+    top: 140px;
   }
 
   .video-back-row:nth-child(3) {
     margin-left: -6%;
-    margin-bottom: 0;
-    transform: rotate(0deg);
-    margin-top: 70px;
+    top: 330px;
+    transform: translateX(-50%) rotate(0deg);
   }
 
   .video-back-card {
@@ -1741,17 +1809,26 @@ html[lang="hi"] .footer-bottom {
 <!-- FIXED HEADER -->
 <header class="header">
   <nav>
-    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="main-menu" aria-label="Open menu">
-      <span></span>
-      <span></span>
-      <span></span>
-    </button>
+    <div class="mobile-nav-top">
+      <div class="lang-switch mobile-lang-switch" role="group" aria-label="Language selector">
+        <button type="button" class="lang-btn" data-lang="en">EN</button>
+        <button type="button" class="lang-btn" data-lang="hi">हिंदी</button>
+      </div>
+      <a class="mobile-nav-logo" href="#story" aria-label="Sahi helpline home">
+        <img src="images/SahiHelplineLogo.png" alt="Sahi helpline logo" loading="lazy" decoding="async" />
+      </a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="main-menu" aria-label="Open menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
     <div class="nav-links" id="main-menu">
       <a href="#parallax" data-i18n="navHelpline">Helpline</a>
       <a href="#faq" data-i18n="navInfo">Sahi Information</a>
       <a href="tel:+919621795550" data-i18n="navSpeak">Speak to Counsellor</a>
       <a href="#contact" data-i18n="navSchedule">Schedule Call</a>
-      <div class="lang-switch" role="group" aria-label="Language selector">
+      <div class="lang-switch desktop-lang-switch" role="group" aria-label="Language selector">
         <button type="button" class="lang-btn" data-lang="en">EN</button>
         <button type="button" class="lang-btn" data-lang="hi">हिंदी</button>
       </div>
