@@ -2106,14 +2106,17 @@ html[lang="hi"] .footer-bottom {
       </div>
 
       <div class="contact-card">
-        <form class="contact-form">
+        <form class="contact-form" action="https://formsubmit.co/sunainamahesh1@gmail.com" method="POST">
+          <input type="hidden" name="_subject" value="New enquiry from Sahi helpline website" />
+          <input type="hidden" name="_captcha" value="false" />
+          <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" />
           <div class="contact-field">
             <label class="contact-label" for="contact-name" data-i18n="labelName">Name</label>
-            <input class="contact-input" id="contact-name" name="name" type="text" placeholder="Your full name" data-i18n-placeholder="phName" />
+            <input class="contact-input" id="contact-name" name="name" type="text" placeholder="Your full name" data-i18n-placeholder="phName" required />
           </div>
           <div class="contact-field">
             <label class="contact-label" for="contact-email" data-i18n="labelEmail">Email</label>
-            <input class="contact-input" id="contact-email" name="email" type="email" placeholder="you@example.com" data-i18n-placeholder="phEmail" />
+            <input class="contact-input" id="contact-email" name="email" type="email" placeholder="you@example.com" data-i18n-placeholder="phEmail" required />
           </div>
           <div class="contact-field">
             <label class="contact-label" for="contact-phone" data-i18n="labelPhone">Phone Number</label>
